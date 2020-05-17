@@ -291,10 +291,11 @@ def process_item(item):
                 im = im1[-1]
                 # Set Download path here http://boatlistr.com/demo/wp-content/uploads/
                 ImageURL='http://boatlistr.com/demo/wp-content/uploads/'+str(im)
+                print(LocalImage)
                 
                 
-                downloadImage(ImageURL,
-                                './uploads/' + str(im.split('?')[0]))
+                downloadImage(LocalImage,
+                                './uploads/' + str(im))
                 
                 
                 ins_delete_update("INSERT INTO `wp_posts` (`post_author` ,`post_date` ,`post_date_gmt` ,`post_content` ,`post_title` ,`post_excerpt` ,`post_status` ,`comment_status` ,`ping_status` ,`post_password` ,`post_name` ,`to_ping` ,`pinged` ,`post_modified` ,`post_modified_gmt` ,`post_content_filtered` ,`post_parent` ,`guid` ,`menu_order` ,`post_type` ,`post_mime_type`) VALUES (N'"+str(AuthorID).replace("'", "''").replace("'", "''")+"' ,N'"+str(post_date).replace("'", "''")+"' ,N'"+str(post_date_gmt).replace("'", "''")+"' ,'' ,N'boatimage"+str(co)+" "+item['title']+"' ,N'"+str(post_excerpt).replace("'", "''")+"' ,N'Inherit' ,N'open' ,N'"+str(ping_status).replace("'", "''")+"' ,N'"+str(post_password).replace("'", "''")+"' ,N'boatimage"+str(co)+" "+item['specification']['seller'].replace('\\n', '').replace("'", "''")+"' ,'' ,N'"+str(pinged).replace("'", "''")+"' ,N'"+str(post_modified).replace("'", "''")+"' ,N'"+str(post_modified_gmt).replace("'", "''")+"' ,N'"+str(post_content_filtered).replace("'", "''")+"' ,N'"+str(post_parent).replace("'", "''")+"' ,N'"+str(ImageURL).replace("'", "''")+"' ,N'"+str(menu_order).replace("'", "''")+"' ,N'"+str(post_type).replace("'", "''")+"' ,N'image/jpeg')")
